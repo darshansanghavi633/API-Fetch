@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid 19</title>
+</head>
+<script defer src="covid19.js"></script>
+<style>
+    body{
+        background-color: rgb(192, 192, 192);
+    }
+    h1{
+        margin: -7px;
+    }
+    .title{
+        background-color: darkgray;
+        text-align: center;
+        padding: 10px;
+    }
+    .intro,.intro1{
+        font-size: 18px;
+        text-align: center;
+        padding-top: 5px;
+    }
+    .info{
+        text-align: center;
+    }
+    table{
+        width: 100%;
+        border: solid 1px;
+        border-collapse: collapse;
+    }
+    th,td{
+        border: solid 1px;
+        text-align: center;
+
+    }
+</style>
+<body>
+    <h1 class="title">Covid 19 Coronavirus Pandemic</h1>
+    <p class="intro">
+        <i>Displayed all the stats related to covid-19 from various countries below.</i> 
+    </p>
+    <h3 class="info">
+        Reported Cases and Deaths by Country or Territory
+    </h3>
+    <p class="intro1">
+        <i>The coronavirus COVID-19 is affecting 228 countries and territories.</i>
+    </p>
+        <table>
+            <tr>
+              <th>Country</th>
+              <th>Cases</th>
+              <th>Deaths</th>
+              <th>Recovered</th>
+            </tr>
+            <div id="records">
+            </div>
+
+          </table>
+</body>
+</html>
