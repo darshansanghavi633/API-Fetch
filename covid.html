@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid 19</title>
 </head>
-<script defer src="covid19.js"></script>
 <style>
     body{
         background-color: rgb(192, 192, 192);
@@ -37,6 +36,24 @@
         text-align: center;
 
     }
+    #inputbox{
+        margin-top: 30px;
+        margin-left: 30px;
+        width: 70vw;
+        height: 30px;
+        background-color: lightgray;
+        color: black;
+    }
+    #btn1{
+        width: 10vw;
+        height: 30px;
+        color: whitesmoke;
+        background-color: black;
+    }
+    hr{
+        border: black solid 0.2px;
+    }
+    
 </style>
 <body>
     <h1 class="title">Covid 19 Coronavirus Pandemic</h1>
@@ -49,16 +66,31 @@
     <p class="intro1">
         <i>The coronavirus COVID-19 is affecting 228 countries and territories.</i>
     </p>
-        <table>
-            <tr>
-              <th>Country</th>
-              <th>Cases</th>
-              <th>Deaths</th>
-              <th>Recovered</th>
-            </tr>
-            <div id="records">
-            </div>
+        </table>
+            <div>
+              <form class="form" id="form" role="search">
+                <input  id="inputbox" type="search" placeholder="Enter country to know no. of deaths, cases and recovery" aria-label="Search">
+                <!-- <button class="searchbtn" onclick="returnText()" value="submit" type="submit">Search</button> -->
+                <input type="button" id="btn1" value="Search">
+                <strong><p class="output" id="output1"></p></strong>
+                <div>
+                    <hr>
+                    <div class="country" id="country">Country:</div>
+                    <hr>
+                    <div class="cases" id="cases">Cases:</div>
+                    <hr>
+                    <div class="death" id="death">Death:</div>
+                    <hr>
+                    <div class="recovered" id="recovered">Recovered:</div>
+                    <hr>
 
-          </table>
-</body>
+                </div>
+                </p>
+              </form>
+            </div>
+            <div id="error"></div>
+        <div id="records">
+        </div>
+    </body>
+    <script defer src="covid19.js"></script>
 </html>

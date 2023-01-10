@@ -1,3 +1,11 @@
+let inputbox = document.getElementById("inputbox");
+let btn1 = document.getElementById('btn1');
+let out1 = document.getElementById('output1');
+let country = [];
+let cases = [];
+let death =[];
+let recovered =[];
+
 const options = {
 	method: 'GET',
 	headers: {
@@ -5,58 +13,41 @@ const options = {
 		'X-RapidAPI-Host': 'corona-virus-world-and-india-data.p.rapidapi.com'
 	}
 };
-countries1=[];
-cases1=[];
-deaths1=[];
-recovered1=[];
 
+
+btn1.addEventListener('click',fun1);
 fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
-	.then(response => response.json())
-	.then(response =>{
-		console.log(response)
-		let data1="";
-		let country="";
-		let cases="";
-		let deaths="";
-		let recovered="";
-		for (let i = 0; i < 288; i++) {
-			
-			country=response.countries_stat[i]
-						// for (let i = 0; i < 10; i++)console.log(country){
-						// 	co
-			
-						data1 +=`<p> ${country[i].country_name} </p>`
+.then(response => response.json())
+.then(response => { 
+		console.log(response);
+
+
+		for (let i = 0; i < 228; i++) {
+			country[i] = response.countries_stat[i].country_name;
+			cases[i] = response.countries_stat[i].cases;
+			death[i] = response.countries_stat[i].deaths;
+			recovered[i] = response.countries_stat[i].total_recovered;
+
 		}
 
-		// let data1 ="";
-		//  Object.keys(response).map(()=>{
-		// 	data1=`		
-		// <tr>
-		// 	<td>${values.country_name}</td>
-		// 	<td>${values.cases}</td>
-		// 	<td>${values.deaths}</td>
-		// 	<td>${values.total_recovered}</td>
-		// </tr>
-		// `
-		// });
-
-		// for (let i = 0; i < 288; i++) {
-		// 	let data2="";
-		// 	countries1.push(response.countries_stats[i].country_name);
-		// 	cases1.push(response.countries_stats[i].cases);
-		// 	deaths1.push(response.countries_stats[i].deaths);
-		// 	recovered1.push(response.countries_stats[i].recovered);
-		// 			for (let i = 0; i < 288; i++) {		
-		// 				data2 +=`	
-		// 				<tr>
-		// 					<td>${countries1[i]}</td>
-		// 					<td>${cases1[i]}</td>
-		// 					<td>${deaths1[i]}</td>
-		// 					<td>${recovered1[i]}</td>
-		// 				</tr>
-		// 				`	
-		// 			}
-		// }
-		document.getElementById("records").innerHTML=data1;
-	})
-	.catch(err => console.log(err));
+	}
+)
+	.catch(err => console.error(err));
+	function fun1(){
+		out1.innerHTML = inputbox.value;
+		
+					for (let i = 0; i < 228; i++) {
+					if(inputbox.value===country[i]){
+		
+						document.getElementById('cases').innerHTML = 'Cases: '+ cases[i];
+						document.getElementById('death').innerHTML = 'Death: '+ death[i];
+						document.getElementById('country').innerHTML = 'Country: ' + country[i];
+						document.getElementById('recovered').innerHTML = 'Recovered: ' + recovered[i];
+		
+					// console.log(country1);
+					// console.log(case1);	
+					// console.log(death1);
+					// console.log(recovered1);
+					}
+				}
+		}
