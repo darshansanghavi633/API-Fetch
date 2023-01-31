@@ -34,11 +34,18 @@ fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 )
 	.catch(err => console.error(err));
 	function fun1(){
-		out1.innerHTML = inputbox.value;
+		let input=inputbox.value;
+		input=input.charAt(0).toUpperCase() + input.slice(1);
+		console.log(input);
+		if (input==="") {
+			alert("Enter Country Name!");
+		}
+
+		out1.innerHTML = input;
 		
 					for (let i = 0; i < 228; i++) {
-					if(inputbox.value===country[i]){
-		
+					if(input===country[i]){
+						out1.innerHTML=inputbox.value;
 						document.getElementById('cases').innerHTML = 'Cases: '+ cases[i];
 						document.getElementById('death').innerHTML = 'Death: '+ death[i];
 						document.getElementById('country').innerHTML = 'Country: ' + country[i];
