@@ -1,6 +1,7 @@
 let inputbox = document.getElementById("inputbox");
 let btn1 = document.getElementById('btn1');
 let out1 = document.getElementById('output1');
+let out2 = document.getElementById('output2');
 let country = [];
 let cases = [];
 let death =[];
