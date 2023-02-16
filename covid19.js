@@ -1,16 +1,14 @@
 let inputbox = document.getElementById("inputbox");
 let btn1 = document.getElementById('btn1');
 let out1 = document.getElementById('output1');
-let out2 = document.getElementById('output2');
 let country = [];
 let cases = [];
 let death =[];
 let recovered =[];
-
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'f6e01f7b67msh8faee5adb940d72p1fb477jsn94cbf0f9b5c0',
+		'X-RapidAPI-Key':'f6e01f7b67msh8faee5adb940d72p1fb477jsn94cbf0f9b5c0',
 		'X-RapidAPI-Host': 'corona-virus-world-and-india-data.p.rapidapi.com'
 	}
 };
@@ -34,6 +32,8 @@ fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 	}
 )
 	.catch(err => console.error(err));
+	
+	
 	function fun1(){
 		let input=inputbox.value;
 		input=input.charAt(0).toUpperCase() + input.slice(1);
@@ -43,19 +43,20 @@ fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 		}
 
 		out1.innerHTML = input;
-		
-					for (let i = 0; i < 228; i++) {
-					if(input===country[i]){
-						out1.innerHTML=inputbox.value;
-						document.getElementById('cases').innerHTML = 'Cases: '+ cases[i];
-						document.getElementById('death').innerHTML = 'Death: '+ death[i];
-						document.getElementById('country').innerHTML = 'Country: ' + country[i];
-						document.getElementById('recovered').innerHTML = 'Recovered: ' + recovered[i];
-		
-					// console.log(country1);
-					// console.log(case1);	
-					// console.log(death1);
-					// console.log(recovered1);
-					}
+			let counter = 0;
+			for (let i = 0; i < 228; i++) {
+				if(input===country[i]){
+					out1.innerHTML=input;
+					document.getElementById('cases').innerHTML = 'Cases: '+ cases[i];
+					document.getElementById('death').innerHTML = 'Death: '+ death[i];
+					document.getElementById('country').innerHTML = 'Country: ' + country[i];
+					document.getElementById('recovered').innerHTML = 'Recovered: ' + recovered[i];
 				}
-		}
+				else{
+					counter++;
+				}
+			}
+			if (counter===228 && country[228]!=input) {
+				out1.innerHTML="Enter valid country name!"
+			}
+	}
