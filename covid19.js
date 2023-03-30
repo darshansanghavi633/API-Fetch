@@ -1,11 +1,15 @@
 let inputbox = document.getElementById("inputbox");
 let btn1 = document.getElementById('btn1');
 let out1 = document.getElementById('output1');
+
+//initializing arrays to store data 
 let country = [];
 let cases = [];
 let death =[];
 let recovered =[];
 
+
+//dark mode / light mode button
 function changeMode() {
 	var body = document.body;
 	
@@ -21,6 +25,7 @@ function changeMode() {
 	}
  }
 
+//Fetching API using GET method
 const options = {
 	method: 'GET',
 	headers: {
@@ -29,14 +34,17 @@ const options = {
 	}
 };
 
-
+//adding click event listener to button
 btn1.addEventListener('click',fun1);
+
+
+//fetching API and resolving promises
 fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 .then(response => response.json())
 .then(response => { 
 		console.log(response);
 
-
+		//storing data in arrays
 		for (let i = 0; i < 228; i++) {
 			country[i] = response.countries_stat[i].country_name;
 			cases[i] = response.countries_stat[i].cases;
@@ -47,9 +55,10 @@ fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 
 	}
 )
+	//if API isn't fetch give error on console
 	.catch(err => console.error(err));
 	
-	
+	// Searching for data for the entered country name
 	function fun1(){
 		let input=inputbox.value;
 		input=input.charAt(0).toUpperCase() + input.slice(1);
@@ -58,6 +67,7 @@ fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 			alert("Enter Country Name!");
 		}
 
+		//Diplaying data using DOM manipuation
 		out1.innerHTML = input;
 			let counter = 0;
 			for (let i = 0; i < 228; i++) {
@@ -72,6 +82,7 @@ fetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api', options)
 					counter++;
 				}
 			}
+			//incase user enter country which doesn't exist notify him
 			if (counter===228 && country[228]!=input) {
 				out1.innerHTML="Enter valid country name!"
 			}

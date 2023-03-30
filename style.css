@@ -1,0 +1,17 @@
+.title {
+  margin-top: auto;
+  text-align: center;
+  padding: 10px;
+}
+.dark-theme {
+  color: white;
+  background-color: rgb(26, 20, 20);
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding: 20px;
+}
