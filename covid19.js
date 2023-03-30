@@ -5,6 +5,22 @@ let country = [];
 let cases = [];
 let death =[];
 let recovered =[];
+
+function changeMode() {
+	var body = document.body;
+	
+	// toggle the theme
+	body.classList.toggle("dark-theme");
+	let button = document.getElementById('button');
+	
+	// change the button text
+	if (button.innerHTML == "Normal Mode") {
+	   button.innerHTML = "Dark Mode";
+	} else {
+	   button.innerHTML = "Normal Mode"
+	}
+ }
+
 const options = {
 	method: 'GET',
 	headers: {
